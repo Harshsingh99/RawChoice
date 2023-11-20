@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 20px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    .search-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    .search-form.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .search-form input {
+      padding: 5px;
+      margin-right: 5px;
+      border: none;
+    }
+
+    @media (min-width: 600px) {
+      .search-form {
+        visibility: visible;
+        opacity: 1;
+        transition: none;
+      }
+
+      .search-icon {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <div class="search-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="Search...">
+        <button type="submit">Go</button>
+      </form>
+    </nav>
+    <script>
+      window.addEventListener('resize', function () {
+        var searchIcon = document.querySelector('.search-icon');
+        var searchForm = document.querySelector('.search-form');
+        var navbar = document.querySelector('nav');
+        if (navbar.offsetWidth < 600) {
+          searchIcon.style.display = 'block';
+          searchForm.classList.remove('visible');
+        } else {
+          searchIcon.style.display = 'none';
+          searchForm.classList.add('visible');
+        }
+      });
+
+      document.querySelector('.search-icon').addEventListener('click', function () {
+        var searchForm = document.querySelector('.search-form');
+        searchForm.classList.add('visible');
+      });
+
+
+    </script>
+</body>
+
+</html>
